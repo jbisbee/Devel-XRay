@@ -3,7 +3,7 @@ use warnings;
 use strict;
 use Filter::Simple;
 use Carp qw(croak);
-our $VERSION = '0.55';
+our $VERSION = '0.551';
 
 BEGIN {
     warn "trace has been renamed to Devel::XRay";
