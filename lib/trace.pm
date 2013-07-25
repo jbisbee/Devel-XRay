@@ -3,16 +3,22 @@ use warnings;
 use strict;
 use Filter::Simple;
 use Carp qw(croak);
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 BEGIN {
     use constant DEBUG => 0;
 
-    unless ($INC{"Time/Hires.pm"}) {
-	eval { use Time::Hires; };
+    use Data::Dumper;
+    warn Dumper(\%INC);
+
+
+    unless (exists $INC{"Time/HiRes.pm"}) {
+	eval { require Time::HiRes; };
     }
-    our $timing = $INC{"Time/Hires.pm"} ? 
+    our $timing = exists $INC{"Time/HiRes.pm"} ? 
 	'sprintf("%.6f", &Time::HiRes::time())' : 'sprintf("%d", time)';
+    use Data::Dumper;
+    warn Dumper(\%INC);
     
     our %operations = (
         only   => \&only,
@@ -181,7 +187,7 @@ under the same terms as Perl itself.
 
 =head1 SEE ALSO
 
-L<Filter::Simple>, L<Time::Hires>, L<Hook::LexWrap>, L<Devel::Trace>
+L<Filter::Simple>, L<Time::HiRes>, L<Hook::LexWrap>, L<Devel::Trace>
 
 =cut
 

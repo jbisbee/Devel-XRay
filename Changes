@@ -1,5 +1,10 @@
 Revision history for trace
 
+0.03    08/12/2004
+        - Stupid case insensitive OSX file system...  Time::HiRes...
+	- Also should have used 'require' instead of 'use'...  I wanted
+	  run time and NOT compile time testing of Time::HiRes :)
+
 0.02    08/12/2004
         - Uploaded to CPAN
 	- fix grammar, spelling in pod
