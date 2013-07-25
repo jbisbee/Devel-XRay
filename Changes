@@ -1,5 +1,8 @@
 Revision history for trace
 
+0.55    11/01/2006
+	- fix broken MANIFEST
+
 0.54    11/01/2006
 	- make cpants compatible with updated META.yml
 
