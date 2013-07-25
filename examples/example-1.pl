@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 use strict;
 use warnings;
-use trace;
+use Devel::XRay;
 
 init();
 my $example = Example::Object->new();
@@ -13,7 +13,7 @@ sub init    {}
 sub cleanup {}
 
 package Example::Object;
-use trace;
+use Devel::XRay;
 sub new { bless {}, shift }
 sub name {}
 sub calc {}
