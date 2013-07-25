@@ -1,5 +1,8 @@
 Revision history for trace
 
+0.51    05/06/2005
+	- Borked the last release.  0.5 is broken :(  Fixed the regex.
+
 0.5     05/05/2005
         - Fixed regex not to match substr calls per RT bug #12088 
 	- Added t/01.regex.t to test regex varations 

@@ -3,7 +3,7 @@ use warnings;
 use strict;
 use Filter::Simple;
 use Carp qw(croak);
-our $VERSION = '0.5';
+our $VERSION = '0.51';
 
 BEGIN {
     use constant DEBUG => 0;
@@ -24,7 +24,7 @@ BEGIN {
     our $operation;
     our $subs = "";
     our $trace = ' print STDERR "[" . ' . $timing . ' . "] " . (caller(0))[3] . "\\n";';
-    our $all_regex = qr/sub{|sub[^\w].*?{/;
+    our $all_regex = qr/(sub{|sub[^\w].*?{)/;
     our $regex = "";
 
     sub import {
@@ -69,9 +69,9 @@ use trace along with C<ignore>, C<only>, or C<all>,
 
     use trace;
     use trace 'all';    # same as saying 'use trace;'
+    use trace 'none';   # filter the source but don't insert anything
     use trace ignore => qw(man_behind_curtain skeletons_in_closet _private);
     use trace only   => qw(sex drugs rock_and_roll);
-    use trace 'none';   # filter the source but does change a darn thing
 
 =head1 DESCRIPTION
 
