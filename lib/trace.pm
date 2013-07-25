@@ -3,7 +3,7 @@ use warnings;
 use strict;
 use Filter::Simple;
 use Carp qw(croak);
-our $VERSION = '0.52';
+our $VERSION = '0.53';
 
 BEGIN {
     warn "trace has been renamed to Devel::XRay";
@@ -63,7 +63,7 @@ BEGIN {
 
 =head1 NAME
 
-trace - sufficiently advanced way to trace subroutine calls
+trace - Module Reanmed to Devel::XRay
 
 =head1 SYNOPSIS
 
