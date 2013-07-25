@@ -15,7 +15,7 @@ Version 0.91
 
 =cut
 
-our $VERSION = '0.91';
+our $VERSION = '0.92';
 
 =head1 SYNOPSIS
 
@@ -117,7 +117,7 @@ BEGIN {
     our $subs  = "";
     our $trace = ' print STDERR "[" . ' . $timing
         . ' . "] " . (caller(0))[3] . "\\n";';
-    our $all_regex = qr/(sub[^\w].+?{)/;
+    our $all_regex = qr/(sub\s+\w.+?{)/;
     our $regex     = "";
 
     sub import {
@@ -168,7 +168,7 @@ code.  The first iteration was only 2 lines of actual code.
     my $code = 'print STDERR (caller(0))[3] . "\n";';
     FILTER { return unless $_; $_ =~ s/(sub.+?{)/$1 $code/sg; }
 
-Also, I'd like to thank fellow SouthFlorida.pm Rocco Caputo for working
+I'd also like to thank fellow SouthFlorida.pm Rocco Caputo for working
 out the import logic over Sub Etha Edit at OSCON.  Rock on Rocco!
 
 =head1 AUTHOR

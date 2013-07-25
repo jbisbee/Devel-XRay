@@ -1,5 +1,10 @@
 Revision history for Devel::XRay
 
+0.92    6/20/2006
+        * Fixed all regex
+            * was - our $all_regex = qr/(sub\s+?\w.+?{)
+            * now - our $all_regex = qr/(sub\s+\w.+?{)
+
 0.91    6/5/2006
         * Fixed _all subroutine called (regression from renameed all)
         * Added more tests to use skip, only, and none
