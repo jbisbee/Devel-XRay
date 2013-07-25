@@ -1,5 +1,13 @@
 Revision history for trace
 
+0.5     05/05/2005
+        - Fixed regex not to match substr calls per RT bug #12088 
+	- Added t/01.regex.t to test regex varations 
+	  (those included in the bug and some of my own)
+	- Added new import call 'none' so it won't touch the source.
+	- Bumped version to 0.5
+	- Happy Cinco de Mayo!!
+
 0.04    08/12/2004
         - removed Data::Dumper calls
 

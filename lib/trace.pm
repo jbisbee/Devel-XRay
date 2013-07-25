@@ -3,7 +3,7 @@ use warnings;
 use strict;
 use Filter::Simple;
 use Carp qw(croak);
-our $VERSION = '0.04';
+our $VERSION = '0.5';
 
 BEGIN {
     use constant DEBUG => 0;
@@ -18,12 +18,13 @@ BEGIN {
         only   => \&only,
         ignore => \&ignore,
         all    => \&all,
+	none   => \&none,
     );
 
     our $operation;
     our $subs = "";
     our $trace = ' print STDERR "[" . ' . $timing . ' . "] " . (caller(0))[3] . "\\n";';
-    our $all_regex = qr/(sub.+?{)/;
+    our $all_regex = qr/sub{|sub[^\w].*?{/;
     our $regex = "";
 
     sub import {
@@ -33,7 +34,7 @@ BEGIN {
             croak "unknown import operation: $operation"
                 unless exists $operations{$operation};
             croak "sub list required for operation: $operation\n" 
-		unless $operation eq 'all' || @subs;
+		unless $operation eq 'all' || $operation eq 'none' || @subs;
 	    $regex = '(sub\s+(?:' . join("|", @subs) . ')\s*\{)';
 	    $regex = $regex . quotemeta($trace) if $operation eq "ignore";
 	    #warn "regex: $regex\n";
@@ -48,12 +49,13 @@ BEGIN {
     sub only   { s/$regex/$1$trace/sg; }
     sub ignore { all($_); s/$regex/$1/sg; }
     sub all    { s/$all_regex/$1$trace/sg; }
+    sub none   { }
 
     FILTER { 
-        return unless $_;
-        warn "performing operation: $operation\n" if DEBUG;
-        $operations{$operation}->($_);
-        warn $_ . "\n" if DEBUG;
+	return unless $_;
+	warn "performing operation: $operation\n" if DEBUG;
+	$operations{$operation}->($_);
+	warn $_ . "\n" if DEBUG;
     }
 }
 
@@ -69,6 +71,7 @@ use trace along with C<ignore>, C<only>, or C<all>,
     use trace 'all';    # same as saying 'use trace;'
     use trace ignore => qw(man_behind_curtain skeletons_in_closet _private);
     use trace only   => qw(sex drugs rock_and_roll);
+    use trace 'none';   # filter the source but does change a darn thing
 
 =head1 DESCRIPTION
 
