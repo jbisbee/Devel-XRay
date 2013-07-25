@@ -3,22 +3,16 @@ use warnings;
 use strict;
 use Filter::Simple;
 use Carp qw(croak);
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 BEGIN {
     use constant DEBUG => 0;
-
-    use Data::Dumper;
-    warn Dumper(\%INC);
-
 
     unless (exists $INC{"Time/HiRes.pm"}) {
 	eval { require Time::HiRes; };
     }
     our $timing = exists $INC{"Time/HiRes.pm"} ? 
 	'sprintf("%.6f", &Time::HiRes::time())' : 'sprintf("%d", time)';
-    use Data::Dumper;
-    warn Dumper(\%INC);
     
     our %operations = (
         only   => \&only,
