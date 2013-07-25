@@ -3,9 +3,11 @@ use warnings;
 use strict;
 use Filter::Simple;
 use Carp qw(croak);
-our $VERSION = '0.51';
+our $VERSION = '0.52';
 
 BEGIN {
+    warn "trace has been renamed to Devel::XRay";
+
     use constant DEBUG => 0;
 
     unless (exists $INC{"Time/HiRes.pm"}) {
@@ -15,10 +17,10 @@ BEGIN {
 	'sprintf("%.6f", &Time::HiRes::time())' : 'sprintf("%d", time)';
     
     our %operations = (
-        only   => \&only,
-        ignore => \&ignore,
-        all    => \&all,
-	none   => \&none,
+        only   => \&_only,
+        ignore => \&_ignore,
+        all    => \&_all,
+	none   => \&_none,
     );
 
     our $operation;
@@ -46,10 +48,10 @@ BEGIN {
         }
     }
     
-    sub only   { s/$regex/$1$trace/sg; }
-    sub ignore { all($_); s/$regex/$1/sg; }
-    sub all    { s/$all_regex/$1$trace/sg; }
-    sub none   { }
+    sub _only   { s/$regex/$1$trace/sg; }
+    sub _ignore { _all($_); s/$regex/$1/sg; }
+    sub _all    { s/$all_regex/$1$trace/sg; }
+    sub _none   { }
 
     FILTER { 
 	return unless $_;

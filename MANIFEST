@@ -4,5 +4,11 @@ META.yml # Will be created by "make dist"
 Makefile.PL
 README
 lib/trace.pm
-t/00.load.t
+t/00-load.t
+t/00-load.t
+t/01-use.t
+t/02-use-ignore.t
+t/03-use-only.t
+t/04-use-none.t
 t/pod.t
+t/pod-coverage.t
