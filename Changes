@@ -1,0 +1,11 @@
+Revision history for trace
+
+0.02    08/12/2004
+        - Uploaded to CPAN
+	- fix grammar, spelling in pod
+	- cleaned up testing for Time::HiRes
+
+0.01    08/11/2004
+        First version, released on an unsuspecting world
+	- using Module::Starter after rjbs sold me on cool is it _going_ to be :)
+	    - Module::Starter needs better intergration with Module::Release

@@ -1,0 +1,105 @@
+NAME
+    trace - sufficiently advanced way to trace subroutine calls
+
+SYNOPSIS
+    use trace along with "ignore", "only", or "all",
+
+        use trace;
+        use trace 'all';    # same as saying 'use trace;'
+        use trace ignore => qw(man_behind_curtain skeletons_in_closet _private);
+        use trace only   => qw(sex drugs rock_and_roll);
+
+DESCRIPTION
+    trace is a source filter using Filter::Simple that prints the fully
+    qualified subroutine name (package::subroutine) to standard error as the
+    program runs.
+
+    This module is useful if...
+
+    *   You're a visual learner and want to "see" program execution
+
+    *   You're tracking an anomaly that leads you into unfamiliar code
+
+    *   You want to quickly see how a module _runs_
+
+    *   You've inherited code and need to grok it
+
+    *   You start a new job and want to get a fast track on how things work
+
+EXAMPLES
+        #!/usr/bin/perl
+        use strict;
+        use warnings;
+        use trace;
+
+        use Example::Object;
+
+        init();
+        my $example = Example::Object->new();
+        my $name = $example->name();
+        my $result = $example->calc();
+        cleanup();
+
+        sub init    {}
+        sub cleanup {}
+
+        # In a another file, say Example/Object.pm
+        package Example::Object;
+        use trace;
+        sub new { bless {}, shift }
+        sub name {}
+        sub calc {}
+
+    Produces the following output
+
+        # Hires seconds     # package::sub
+        [1092265261.834574] main::init
+        [1092265261.836732] Example::Object::new
+        [1092265261.837563] Example::Object::name
+        [1092265261.838245] Example::Object::calc
+        [1092265261.839443] main::cleanup
+
+BUGS
+    Please report any bugs or feature requests to "bug-trace@rt.cpan.org",
+    or through the web interface at <http://rt.cpan.org>. I will be
+    notified, and then you'll automatically be notified of progress on your
+    bug as I make changes.
+
+MAD PROPS
+    This module was inspired by Damian Conway's Sufficently Advanced
+    Technology presentation at YAPC::NA 2004. I had initially attempted to
+    use Hook::LexWrap, but using Filter::Simple just seemed to be magical
+    (and the first iteration was only 2 lines of code)
+
+        package trace;
+        use strict;
+        use warnings;
+        use Filter::Simple;
+
+        my $code = 'print STDERR (caller(0))[3] . "\n";';
+        FILTER { return unless $_; $_ =~ s/(sub.+?{)/$1 $code/sg; }
+
+    Also, I'd like to give a shout out goes to fellow SouthFlorida.pm
+    homeboy and dark master of POE, Rocco Caputo, for pairing with me to
+    work out the import logic. Rock on Rocco!
+
+    And my final props go out to the wild man Dennis Taylor, author of
+    POE::Component::IRC, where I saw my first "=head1 MAD PROPS" section.
+    Maybe someday someone will see this "MAD PROPS" section and it will
+    inspire them to send "MAD PROPS" back my way. A man has to have his
+    dream... :D
+
+AUTHOR
+    Copyright 2004 Jeff Bisbee <jbisbee@cpan.org>
+
+    http://search.cpan.org/~jbisbee/
+
+LICENSE
+    Copyright 2004 Jeff, All Rights Reserved.
+
+    This program is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself.
+
+SEE ALSO
+    Filter::Simple, Time::Hires, Hook::LexWrap, Devel::Trace
+
