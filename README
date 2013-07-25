@@ -1,11 +1,12 @@
 NAME
-    trace - sufficiently advanced way to trace subroutine calls
+    trace - Module Reanmed to Devel::XRay
 
 SYNOPSIS
     use trace along with "ignore", "only", or "all",
 
         use trace;
         use trace 'all';    # same as saying 'use trace;'
+        use trace 'none';   # filter the source but don't insert anything
         use trace ignore => qw(man_behind_curtain skeletons_in_closet _private);
         use trace only   => qw(sex drugs rock_and_roll);
 
@@ -101,5 +102,5 @@ LICENSE
     under the same terms as Perl itself.
 
 SEE ALSO
-    Filter::Simple, Time::Hires, Hook::LexWrap, Devel::Trace
+    Filter::Simple, Time::HiRes, Hook::LexWrap, Devel::Trace
 

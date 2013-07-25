@@ -1,5 +1,8 @@
 Revision history for trace
 
+0.54    11/01/2006
+	- make cpants compatible with updated META.yml
+
 0.53    06/20/2006
 	- Fix module description to show new module name
 
