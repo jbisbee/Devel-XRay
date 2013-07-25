@@ -1,5 +1,11 @@
 Revision history for Devel::XRay
 
+0.94    11/01/2006
+        * fix pause error
+
+0.93    11/01/2006
+        * fixed META.yaml for cpants 
+
 0.92    6/20/2006
         * Fixed all regex
             * was - our $all_regex = qr/(sub\s+?\w.+?{)

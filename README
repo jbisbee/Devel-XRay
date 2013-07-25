@@ -2,7 +2,7 @@ NAME
     Devel::XRay - See What a Perl Module Is Doing
 
 VERSION
-    Version 0.91
+    Version 0.94
 
 SYNOPSIS
     use Devel::XRay along with "ignore", "only", or "all",
@@ -78,7 +78,7 @@ ACKNOWLEDGEMENTS
         my $code = 'print STDERR (caller(0))[3] . "\n";';
         FILTER { return unless $_; $_ =~ s/(sub.+?{)/$1 $code/sg; }
 
-    Also, I'd like to thank fellow SouthFlorida.pm Rocco Caputo for working
+    I'd also like to thank fellow SouthFlorida.pm Rocco Caputo for working
     out the import logic over Sub Etha Edit at OSCON. Rock on Rocco!
 
 AUTHOR

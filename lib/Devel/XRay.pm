@@ -11,11 +11,11 @@ Devel::XRay - See What a Perl Module Is Doing
 
 =head1 VERSION
 
-Version 0.91
+Version 0.94
 
 =cut
 
-our $VERSION = '0.92';
+our $VERSION = '0.94';
 
 =head1 SYNOPSIS
 
