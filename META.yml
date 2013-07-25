@@ -1,16 +1,11 @@
---- #YAML:1.0
-name:                trace
-version:             0.551
-abstract:            Module Reanmed to Devel::XRay
-license:             perl
-generated_by:        ExtUtils::MakeMaker version 6.31
-distribution_type:   module
-requires:     
-    Carp:                          0
-    Filter::Simple:                0.78
+# http://module-build.sourceforge.net/META-spec.html
+#XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
+name:         Devel-XRay
+version:      0.9
+version_from: lib/Devel/XRay.pm
+installdirs:  site
+requires:
     Test::More:                    0
-meta-spec:
-    url:     http://module-build.sourceforge.net/META-spec-v1.2.html
-    version: 1.2
-author:
-    - Jeff <jbisbee@cpan.org>
+
+distribution_type: module
+generated_by: ExtUtils::MakeMaker version 6.17

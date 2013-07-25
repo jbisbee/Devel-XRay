@@ -1,47 +1,34 @@
-Revision history for trace
+Revision history for Devel::XRay
 
-0.551   11/05/2006
-	- update for CPANTS
-	- Module has been renamed to Devel::XRay
+0.9     6/5/2006
+        * Renamed module Devel::XRay from trace.
+        * Added Perl Best Practices pod framework, Thanks Damian.
+        * Rewrote some of the pod so its not so cheesy
 
-0.55    11/01/2006
-	- fix broken MANIFEST
+0.51    5/6/2005
+	* Borked the last release.  0.5 is broken :(  Fixed the regex.
 
-0.54    11/01/2006
-	- make cpants compatible with updated META.yml
-
-0.53    06/20/2006
-	- Fix module description to show new module name
-
-0.52    06/20/2006
-	- Module has been renamed to Devel::XRay
-        - Testing brought up to snuff
-
-0.51    05/06/2005
-	- Borked the last release.  0.5 is broken :(  Fixed the regex.
-
-0.5     05/05/2005
-        - Fixed regex not to match substr calls per RT bug #12088 
-	- Added t/01.regex.t to test regex varations 
+0.5     5/5/2005
+        * Fixed regex not to match substr calls per RT bug #12088 
+	* Added t/01.regex.t to test regex varations 
 	  (those included in the bug and some of my own)
-	- Added new import call 'none' so it won't touch the source.
-	- Bumped version to 0.5
-	- Happy Cinco de Mayo!!
+	* Added new import call 'none' so it won't touch the source.
+	* Bumped version to 0.5
+	* Happy Cinco de Mayo!!
 
-0.04    08/12/2004
-        - removed Data::Dumper calls
+0.04    8/12/2004
+        * removed Data::Dumper calls
 
-0.03    08/12/2004
-        - Stupid case insensitive OSX file system...  Time::HiRes...
-	- Also should have used 'require' instead of 'use'...  I wanted
+0.03    8/12/2004
+        * Stupid case insensitive OSX file system...  Time::HiRes...
+	* Also should have used 'require' instead of 'use'...  I wanted
 	  run time and NOT compile time testing of Time::HiRes :)
 
-0.02    08/12/2004
-        - Uploaded to CPAN
-	- fix grammar, spelling in pod
-	- cleaned up testing for Time::HiRes
+0.02    8/12/2004
+        * Uploaded to CPAN
+	* fix grammar, spelling in pod
+	* cleaned up testing for Time::HiRes
 
-0.01    08/11/2004
+0.01    8/11/2004
         First version, released on an unsuspecting world
-	- using Module::Starter after rjbs sold me on cool is it _going_ to be :)
-	    - Module::Starter needs better intergration with Module::Release
+	* using Module::Starter after rjbs sold me on cool is it _going_ to be 

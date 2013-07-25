@@ -3,7 +3,7 @@
 use Test::More tests => 1;
 
 BEGIN {
-	use_ok( 'trace' );
+	use_ok( 'Devel::XRay' );
 }
 
-diag( "Testing trace $trace::VERSION, Perl $], $^X" );
+diag( "Testing Devel::XRay $Devel::XRay::VERSION, Perl $], $^X" );

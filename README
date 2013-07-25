@@ -1,19 +1,22 @@
 NAME
-    trace - Module Reanmed to Devel::XRay
+    Devel::XRay - See What a Perl Module Is Doing
+
+VERSION
+    Version 0.9
 
 SYNOPSIS
-    use trace along with "ignore", "only", or "all",
+    use Devel::XRay along with "ignore", "only", or "all",
 
-        use trace;
-        use trace 'all';    # same as saying 'use trace;'
-        use trace 'none';   # filter the source but don't insert anything
-        use trace ignore => qw(man_behind_curtain skeletons_in_closet _private);
-        use trace only   => qw(sex drugs rock_and_roll);
+        use Devel::XRay;
+        use Devel::XRay 'all';    # same as saying 'use trace;'
+        use Devel::XRay 'none';   # filter the source but don't inject anything
+        use Devel::XRay ignore => qw(man_behind_curtain private);
+        use Devel::XRay only   => qw(sex drugs rock_and_roll);
 
 DESCRIPTION
-    trace is a source filter using Filter::Simple that prints the fully
-    qualified subroutine name (package::subroutine) to standard error as the
-    program runs.
+    Devel::XRay is a handy source filter using Filter::Simple when used at
+    the top of perl code, will inject print statements to standard error to
+    show you what a module is doing.
 
     This module is useful if...
 
@@ -31,7 +34,7 @@ EXAMPLES
         #!/usr/bin/perl
         use strict;
         use warnings;
-        use trace;
+        use Devel::XRay;
 
         use Example::Object;
 
@@ -46,7 +49,7 @@ EXAMPLES
 
         # In a another file, say Example/Object.pm
         package Example::Object;
-        use trace;
+        use Devel::XRay;
         sub new { bless {}, shift }
         sub name {}
         sub calc {}
@@ -60,19 +63,14 @@ EXAMPLES
         [1092265261.838245] Example::Object::calc
         [1092265261.839443] main::cleanup
 
-BUGS
-    Please report any bugs or feature requests to "bug-trace@rt.cpan.org",
-    or through the web interface at <http://rt.cpan.org>. I will be
-    notified, and then you'll automatically be notified of progress on your
-    bug as I make changes.
-
-MAD PROPS
+ACKNOWLEDGMENTS
     This module was inspired by Damian Conway's Sufficently Advanced
     Technology presentation at YAPC::NA 2004. I had initially attempted to
-    use Hook::LexWrap, but using Filter::Simple just seemed to be magical
-    (and the first iteration was only 2 lines of code)
+    use Hook::LexWrap, but using Filter::Simple was just a lot cleaner and
+    seem practical for something you on turn on for debugging code. The
+    first iteration was only 2 lines of actual code.
 
-        package trace;
+        package Devel::XRay;
         use strict;
         use warnings;
         use Filter::Simple;
@@ -80,27 +78,49 @@ MAD PROPS
         my $code = 'print STDERR (caller(0))[3] . "\n";';
         FILTER { return unless $_; $_ =~ s/(sub.+?{)/$1 $code/sg; }
 
-    Also, I'd like to give a shout out goes to fellow SouthFlorida.pm
-    homeboy and dark master of POE, Rocco Caputo, for pairing with me to
-    work out the import logic. Rock on Rocco!
-
-    And my final props go out to the wild man Dennis Taylor, author of
-    POE::Component::IRC, where I saw my first "=head1 MAD PROPS" section.
-    Maybe someday someone will see this "MAD PROPS" section and it will
-    inspire them to send "MAD PROPS" back my way. A man has to have his
-    dream... :D
+    Also, I'd like to thank fellow SouthFlorida.pm Rocco Caputo for working
+    out the import logic over Sub Etha Edit at OSCON. Rock on Rocco!
 
 AUTHOR
-    Copyright 2004 Jeff Bisbee <jbisbee@cpan.org>
+    Jeff Bisbee, "<jbisbee at cpan.org>"
 
-    http://search.cpan.org/~jbisbee/
+BUGS
+    Please report any bugs or feature requests to "bug-devel-xray at
+    rt.cpan.org", or through the web interface at
+    <http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Devel-XRay>. I will be
+    notified, and then you'll automatically be notified of progress on your
+    bug as I make changes.
 
-LICENSE
-    Copyright 2004 Jeff, All Rights Reserved.
+SUPPORT
+    You can find documentation for this module with the perldoc command.
+
+        perldoc Devel::XRay
+
+    You can also look for information at:
+
+    *   AnnoCPAN: Annotated CPAN documentation
+
+        <http://annocpan.org/dist/Devel-XRay>
+
+    *   CPAN Ratings
+
+        <http://cpanratings.perl.org/d/Devel-XRay>
+
+    *   RT: CPAN's request tracker
+
+        <http://rt.cpan.org/NoAuth/Bugs.html?Dist=Devel-XRay>
+
+    *   Search CPAN
+
+        <http://search.cpan.org/dist/Devel-XRay>
+
+COPYRIGHT & LICENSE
+    Copyright 2006 Jeff Bisbee, all rights reserved.
 
     This program is free software; you can redistribute it and/or modify it
     under the same terms as Perl itself.
 
 SEE ALSO
-    Filter::Simple, Time::HiRes, Hook::LexWrap, Devel::Trace
+    JavaScript::XRay, Filter::Simple, Time::HiRes, Hook::LexWrap,
+    Devel::Trace
 
