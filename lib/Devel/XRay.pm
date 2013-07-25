@@ -11,11 +11,11 @@ Devel::XRay - See What a Perl Module Is Doing
 
 =head1 VERSION
 
-Version 0.9
+Version 0.91
 
 =cut
 
-our $VERSION = '0.9';
+our $VERSION = '0.91';
 
 =head1 SYNOPSIS
 
@@ -100,9 +100,9 @@ BEGIN {
 
     unless ( exists $INC{"Time/HiRes.pm"} ) {
         eval { require Time::HiRes; };
-        die "Time::HiRes required" if $@;
     }
-    our $timing = exists $INC{"Time/HiRes.pm"}
+    our $timing =
+        exists $INC{"Time/HiRes.pm"}
         ? 'sprintf("%.6f", &Time::HiRes::time())'
         : 'sprintf("%d", time)';
 
@@ -140,7 +140,7 @@ BEGIN {
     }
 
     sub _only   { s/$regex/$1$trace/sg; }
-    sub _ignore { all($_); s/$regex/$1/sg; }
+    sub _ignore { _all($_); s/$regex/$1/sg; }
     sub _all    { s/$all_regex/$1$trace/sg; }
     sub _none   { }
 
@@ -149,10 +149,10 @@ BEGIN {
         warn "performing operation: $operation\n" if DEBUG;
         $operations{$operation}->($_);
         warn $_ . "\n" if DEBUG;
-    }
+        }
 }
 
-=head1 ACKNOWLEDGMENTS
+=head1 ACKNOWLEDGEMENTS
 
 This module was inspired by Damian Conway's Sufficently Advanced 
 Technology presentation at YAPC::NA 2004.  I had initially attempted 

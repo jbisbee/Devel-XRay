@@ -5,6 +5,10 @@ Makefile.PL
 README
 lib/Devel/XRay.pm
 t/00-load.t
+t/01-use.t
+t/02-use-ignore.t
+t/03-use-only.t
+t/04-use-none.t
 t/boilerplate.t
 t/pod-coverage.t
 t/pod.t

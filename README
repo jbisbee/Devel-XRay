@@ -2,7 +2,7 @@ NAME
     Devel::XRay - See What a Perl Module Is Doing
 
 VERSION
-    Version 0.9
+    Version 0.91
 
 SYNOPSIS
     use Devel::XRay along with "ignore", "only", or "all",
@@ -63,7 +63,7 @@ EXAMPLES
         [1092265261.838245] Example::Object::calc
         [1092265261.839443] main::cleanup
 
-ACKNOWLEDGMENTS
+ACKNOWLEDGEMENTS
     This module was inspired by Damian Conway's Sufficently Advanced
     Technology presentation at YAPC::NA 2004. I had initially attempted to
     use Hook::LexWrap, but using Filter::Simple was just a lot cleaner and
@@ -98,20 +98,16 @@ SUPPORT
 
     You can also look for information at:
 
-    *   AnnoCPAN: Annotated CPAN documentation
-
+    * AnnoCPAN: Annotated CPAN documentation
         <http://annocpan.org/dist/Devel-XRay>
 
-    *   CPAN Ratings
-
+    * CPAN Ratings
         <http://cpanratings.perl.org/d/Devel-XRay>
 
-    *   RT: CPAN's request tracker
-
+    * RT: CPAN's request tracker
         <http://rt.cpan.org/NoAuth/Bugs.html?Dist=Devel-XRay>
 
-    *   Search CPAN
-
+    * Search CPAN
         <http://search.cpan.org/dist/Devel-XRay>
 
 COPYRIGHT & LICENSE

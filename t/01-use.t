@@ -3,8 +3,8 @@
 use Test::More tests => 1;
 
 BEGIN {
-	use_ok( 'trace' );
+	use_ok( 'Devel::XRay' );
 }
 
-use trace;
+use Devel::XRay;
 

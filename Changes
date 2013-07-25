@@ -1,9 +1,14 @@
 Revision history for Devel::XRay
 
+0.91    6/5/2006
+        * Fixed _all subroutine called (regression from renameed all)
+        * Added more tests to use skip, only, and none
+        * Fixed spelling of acknowledgements
+
 0.9     6/5/2006
         * Renamed module Devel::XRay from trace.
         * Added Perl Best Practices pod framework, Thanks Damian.
-        * Rewrote some of the pod so its not so cheesy
+        * Rewrote some of the pod so its not as cheesy
 
 0.51    5/6/2005
 	* Borked the last release.  0.5 is broken :(  Fixed the regex.
