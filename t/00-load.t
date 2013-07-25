@@ -1,9 +1,10 @@
-#!perl -T
-
+#!/usr/bin/perl
+use strict;
+use warnings;
 use Test::More tests => 1;
 
 BEGIN {
-	use_ok( 'Devel::XRay' );
+    use_ok('Devel::XRay');
 }
 
-diag( "Testing Devel::XRay $Devel::XRay::VERSION, Perl $], $^X" );
+diag("Testing Devel::XRay $Devel::XRay::VERSION, Perl $], $^X");

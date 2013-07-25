@@ -1,5 +1,15 @@
 Revision history for Devel::XRay
 
+0.95    06/30/2008
+        - perlcritic updates
+            - move pod after __END__
+            - fix useless string interpolation
+            - include /s on quoted regexps and not on quoted regexp execution
+            - use strict/use warnings on tests
+        - touched up pod in a couple places
+            - use trace; should be use Devel::XRay;
+            - fixed two grammar errors
+
 0.941   11/05/2006
         - No need to update, cpants META.yml fix, needed to update to
           ExtUtils::MakeMaker 6.31 for META.yml update

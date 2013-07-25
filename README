@@ -2,13 +2,13 @@ NAME
     Devel::XRay - See What a Perl Module Is Doing
 
 VERSION
-    Version 0.941
+    Version 0.95
 
 SYNOPSIS
     use Devel::XRay along with "ignore", "only", or "all",
 
         use Devel::XRay;
-        use Devel::XRay 'all';    # same as saying 'use trace;'
+        use Devel::XRay 'all';    # same as saying 'use Devel::XRay;'
         use Devel::XRay 'none';   # filter the source but don't inject anything
         use Devel::XRay ignore => qw(man_behind_curtain private);
         use Devel::XRay only   => qw(sex drugs rock_and_roll);
@@ -67,8 +67,8 @@ ACKNOWLEDGEMENTS
     This module was inspired by Damian Conway's Sufficently Advanced
     Technology presentation at YAPC::NA 2004. I had initially attempted to
     use Hook::LexWrap, but using Filter::Simple was just a lot cleaner and
-    seem practical for something you on turn on for debugging code. The
-    first iteration was only 2 lines of actual code.
+    seemed a bit more practical for debugging code. The first iteration was
+    only 2 lines of actual code.
 
         package Devel::XRay;
         use strict;
@@ -78,8 +78,8 @@ ACKNOWLEDGEMENTS
         my $code = 'print STDERR (caller(0))[3] . "\n";';
         FILTER { return unless $_; $_ =~ s/(sub.+?{)/$1 $code/sg; }
 
-    I'd also like to thank fellow SouthFlorida.pm Rocco Caputo for working
-    out the import logic over Sub Etha Edit at OSCON. Rock on Rocco!
+    I'd also like to thank fellow SouthFlorida.pm member Rocco Caputo for
+    working out the import logic over Sub Etha Edit at OSCON. Rock on Rocco!
 
 AUTHOR
     Jeff Bisbee, "<jbisbee at cpan.org>"
@@ -98,16 +98,20 @@ SUPPORT
 
     You can also look for information at:
 
-    * AnnoCPAN: Annotated CPAN documentation
+    *   AnnoCPAN: Annotated CPAN documentation
+
         <http://annocpan.org/dist/Devel-XRay>
 
-    * CPAN Ratings
+    *   CPAN Ratings
+
         <http://cpanratings.perl.org/d/Devel-XRay>
 
-    * RT: CPAN's request tracker
+    *   RT: CPAN's request tracker
+
         <http://rt.cpan.org/NoAuth/Bugs.html?Dist=Devel-XRay>
 
-    * Search CPAN
+    *   Search CPAN
+
         <http://search.cpan.org/dist/Devel-XRay>
 
 COPYRIGHT & LICENSE
